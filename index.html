@@ -161,7 +161,7 @@
     <div class="hero-body">
       <img src="static/images/Lifting_Experiment.png" alt="MY ALT TEXT"/>
       <h2 class="subtitle">
-        Our goal in this paper is to construct transportation plans between $d$-dimensional measures ($d > 1$) using their one-dimensional marginals, or slices. For two measures $\mu^1$ (represented by green circles) and $\mu^2$ (represented by blue circles), we first derive a one-dimensional transport plan $\Lambda_\theta^{\mu^1, \mu^2}$ from their slices along a unit vector $\theta$ (indicated by triangles). This one-dimensional transport plan is then lifted back to the original $d$-dimensional space to produce a transport plan between the measures, $\gamma_\theta^{\mu^1, \mu^2}$. Finally, these transport plans are aggregated over all directions $\theta \in \mathbb{S}^{d-1}$. In (a), the measures $\mu^1$ and $\mu^2$ are uniform, with their masses non-overlapping when projected in the direction of $\theta$. In (b), $\mu^1$ and $\mu^2$ are non-uniform, resulting in overlapping masses when projected along $\theta$.
+        Our goal in this paper is to construct transportation plans between $d$-dimensional measures ($d > 1$) using their one-dimensional marginals, or slices. 
       </h2>
     </div>
   </div>
@@ -176,7 +176,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The optimal transport (OT) problem has gained significant traction in modern machine learning for its ability to: (1) provide versatile metrics, such as Wasserstein distances and their variants, and (2) determine optimal couplings between probability measures. To reduce the computational complexity of OT solvers, methods like entropic regularization and sliced optimal transport have been proposed. The sliced OT framework improves efficiency by comparing one-dimensional projections (slices) of high-dimensional distributions. However, despite their computational efficiency, sliced-Wasserstein approaches lack a transportation plan between the input measures, limiting their use in scenarios requiring explicit coupling. In this paper, we address two key questions: Can a transportation plan be constructed between two probability measures using the sliced transport framework? If so, can this plan be used to define a metric between the measures? We propose a "lifting" operation to extend one-dimensional optimal transport plans back to the original space of the measures. By computing the expectation of these lifted plans, we derive a new transportation plan, termed expected sliced transport (EST) plans. We further prove that using the EST plan to weight the sum of the individual Euclidean costs $|x-y|^p$ for moving from $x$ to $y$ results in a valid metric between the input discrete probability measures. Finally, we demonstrate the connection between our approach and the recently proposed min-SWGG, along with illustrative numerical examples that support our theoretical findings.
+            The optimal transport (OT) problem has gained significant traction in modern machine learning for its ability to: (1) provide versatile metrics, such as Wasserstein distances and their variants, and (2) determine optimal couplings between probability measures. To reduce the computational complexity of OT solvers, methods like entropic regularization and sliced optimal transport have been proposed. The sliced OT framework improves efficiency by comparing one-dimensional projections (slices) of high-dimensional distributions. However, despite their computational efficiency, sliced-Wasserstein approaches lack a transportation plan between the input measures, limiting their use in scenarios requiring explicit coupling. In this paper, we address two key questions: Can a transportation plan be constructed between two probability measures using the sliced transport framework? If so, can this plan be used to define a metric between the measures? We propose a "lifting" operation to extend one-dimensional optimal transport plans back to the original space of the measures. By computing the expectation of these lifted plans, we derive a new transportation plan, termed expected sliced transport (EST) plans. We further prove that using the EST plan to weight the sum of the individual Euclidean costs $|x-y|^p$ for moving from $x$ to $y$ results in a valid metric between the input discrete probability measures. Finally, we demonstrate the connection between our approach and the recently proposed min-SWGG [1], along with illustrative numerical examples that support our theoretical findings.
           </p>
         </div>
       </div>
@@ -218,6 +218,29 @@
             <li>This one-dimensional transport plan is then lifted back to the original $d$-dimensional space to produce a transport plan between the measures, $\gamma_\theta^{\mu^1, \mu^2}$.</li>
             <li>Finally, these transport plans are aggregated over all directions $\theta \in \mathbb{S}^{d-1}$ to obtain the Expected Sliced Transport Plan: $\bar{\gamma}^{\mu^1,\mu^2}:=\mathbb{E}_{\theta\sim \sigma}[\gamma_\theta^{\mu^1,\mu^2}]$.</li>
           </p>
+          <img src="static/images/Expected_Sliced_Plan.png" alt="MY ALT TEXT"/>
+          <h2 class="subtitle">
+            Depiction of transport plans (an optimal transport plan, a plan obtained from solving an entropically regularized transport problem, and the proposed expected sliced transport plan) between source (orange) and target (blue) for four different configurations of masses. The measures in the left and right panels are concentrated on the same particles, respectively; however, the top row depicts measures with uniform mass, while the bottom row depicts measures with random, non-uniform mass. transport plans are shown as gray assignments and as $n\times m$ heat matrices encoding the amount of mass transported (dark color = no transportation, bright color = more transportation), where $n$ is the number of particles on which the source measure is concentrated, and $m=2n$ is the number of particles on which the target measure is concentrated.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method -->
+
+
+<!-- Computaion Efficiency -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Computation Efficiency</h2>
+        <div class="content has-text-justified">
+          <img src="static/images/Wall_clock.png" alt="MY ALT TEXT"/>
+          <h2 class="subtitle">
+            Wall-clock time plot of Sinkhorn algorithm for entropic OT with varying $\lambda$ and the EST method for different numbers of slices, $L$, as the size $N$ of the empirical measures increases.
+          </h2>
         </div>
       </div>
     </div>
