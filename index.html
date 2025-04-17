@@ -240,7 +240,7 @@
         <div class="content has-text-justified">
           <img src="static/images/Wall_clock.png" alt="MY ALT TEXT"/>
           <p>
-            Wall-clock time plot of Sinkhorn algorithm for entropic OT with varying $\lambda$ and the EST method for different numbers of slices, $L$, as the size $N$ of the empirical measures increases.
+            Figure: Wall-clock time plot of Sinkhorn algorithm for entropic OT with varying $\lambda$ and the EST method for different numbers of slices, $L$, as the size $N$ of the empirical measures increases.
           </p>
         </div>
       </div>
@@ -249,6 +249,36 @@
 </section>
 <!-- End method -->
 
+
+<!-- Experiments -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Experiments</h2>
+        <div class="content has-text-justified">
+          <p>
+            Temperature approach: Given $\mu^1,\mu^2$ discrete probability measures, we perform the new expected sliced transportation scheme by using the following averaging measure $\sigma_\tau\ll \mathcal{U}(\mathbb{S}^{d-1})$ on the sphere: $d\sigma_\tau(\theta)= \frac{e^{-\tau \mathcal{D}^p_p(\mu^1,\mu^2;\theta)}}{\int_{\mathbb S^{d-1}} e^{-\tau \mathcal{D}_p^p(\mu^1,\mu^2;\theta') }d\theta'}d\theta$, where $\mathcal{D}_p(\mu^1,\mu^2;\theta):=\left(\sum_{x\in \mathbb{R}^d}\sum_{y\in\mathbb{R}^d}\|x-y\|^p\gamma_\theta^{\mu^1,\mu^2}(\{x,y\})\right)^{1/p}$, and $\tau \geq 0$ is a hyperparameter we will refer to as the temperature.
+          </p>
+
+          <img src="static/images/Interpolation2.png" alt="MY ALT TEXT"/>
+          <p>
+            Figure: Interpolation between two point clouds via $((1-t)x+ty)_\# \gamma$, where $\gamma$ is the optimal transport plan for $W_2(\cdot,\cdot)$ (top left), the transport plan obtained from entropic OT with various regularization parameters (bottom left), and the EST for different temperatures $\tau$ (right).
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <img src="static/images/tSNE4.png" alt="MY ALT TEXT"/>
+          <p>
+            Figure: t-SNE visualization of the embeddings computed using different transport plans, along with the corresponding logistic regression accuracy for each embedding. The t-SNE plots are generated for embeddings with a reference size of $N=100$, and for EST, we used $L=128$ slices. The table shows the accuracy of the embeddings as a function of reference size $N$. For the table, the regularization parameter for entropic OT is set to $\lambda=10$, and for EST, the temperature is set to $\tau=0$ with $L=128$ slices. Lastly, the plot on the bottom left shows the performance of EST, when $N=100$ and $L=128$, as a function of the temperature parameter, $\tau$.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method -->
 
 
 
