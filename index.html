@@ -240,7 +240,7 @@
         <div class="content has-text-justified">
           <img src="static/images/Wall_clock.png" alt="MY ALT TEXT"/>
           <p>
-            Figure: Wall-clock time plot of Sinkhorn algorithm for entropic OT with varying $\lambda$ and the EST method for different numbers of slices, $L$, as the size $N$ of the empirical measures increases.
+            Figure: Wall-clock time plot of Sinkhorn algorithm for entropic OT [2] with varying $\lambda$ and the EST method for different numbers of slices, $L$, as the size $N$ of the empirical measures increases.
           </p>
         </div>
       </div>
@@ -271,7 +271,17 @@
 
        
           <h3 class="title is-4">Transport-based Embedding</h3>
-          <img src="static/images/tSNE4.png" alt="MY ALT TEXT"/>
+          <p> Following the linear optimal transportation (LOT) framework, also referred to as the Wasserstein or transport-based embedding framework [3], we investigate the application of our proposed transport plan in point cloud classification. Let $\mu_0=\sum_{i=1}^N \alpha_i\delta_{x_i}$ denote a reference probability measure and let $\mu_k = \sum_{j=1}^{N_k} \beta^k_j \delta_{y^k_j}$ denote a target probability measure. Let $\gamma^{\mu_0,\mu_k}$ be a transport plan between $\mu_0$ and $\mu_k$, and define the barycentric projection of this plan as:
+            \[
+                b_i(\gamma^{\mu_0,\mu_k}):= \frac{1}{\alpha_i}\sum_{j=1}^{N_k} \gamma^{\mu_0,\mu_k}_{ij}y^k_j, \qquad i\in{1,...,N}.
+            \]
+            Note that $b_i(\gamma^{\mu_0,\mu_k})$ represents the center of mass to which $x_i$ from the reference measure is transported according to the transport plan $\gamma^{\mu_0,\mu_k}$. When $\gamma^{\mu_0,\mu_k}$ is the OT plan, the LOT framework of [3] uses 
+            \[
+            [\phi(\mu_k)]_i := b_i(\gamma^{\mu_0,\mu_k})-x_i, \qquad i\in{1,...,N}    
+            \]
+            as an embedding $\phi$ for the measure $\mu_k$. This framework, as demonstrated in [4], can be used to define a permutation-invariant embedding for sets of features and, more broadly, point clouds. More precisely, given a point cloud $\mathcal{Y}_k=\{(\beta_j^k,y^k_j)\}_{j=1}^{N_k}$, where  $\sum_{j=1}^{N_k}\beta_j^k=1$ and $\beta_j$ represent the mass at location $y_j$, we represent this point cloud as a discrete measure $\mu_k$. 
+          </p>
+            <img src="static/images/tSNE4.png" alt="MY ALT TEXT"/>
           <p>
             Figure: t-SNE visualization of the embeddings computed using different transport plans, along with the corresponding logistic regression accuracy for each embedding. The t-SNE plots are generated for embeddings with a reference size of $N=100$, and for EST, we used $L=128$ slices. The table shows the accuracy of the embeddings as a function of reference size $N$. For the table, the regularization parameter for entropic OT is set to $\lambda=10$, and for EST, the temperature is set to $\tau=0$ with $L=128$ slices. Lastly, the plot on the bottom left shows the performance of EST, when $N=100$ and $L=128$, as a function of the temperature parameter, $\tau$.
           </p>
